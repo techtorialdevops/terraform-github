@@ -3,10 +3,10 @@ name: Terraform Workflow
 on:
   push:
     branches:
-      - '**' # Run on push to any branch
+      - '**' 
   pull_request:
     branches:
-      - '**' # Run on pull request to any branch
+      - '**' 
 
 jobs:
   terraform:
