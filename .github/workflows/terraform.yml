@@ -3,15 +3,14 @@ name: Terraform Workflow
 on:
   push:
     branches:
-      - main 
+      - '**' 
   pull_request:
     branches:
-      - main
+      - '**' 
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
-
 
     steps:
     - name: Checkout Repository
@@ -35,4 +34,5 @@ jobs:
       run: terraform plan
 
     - name: Terraform Apply
-      run: terraform apply  --auto-approve
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply --auto-approve
